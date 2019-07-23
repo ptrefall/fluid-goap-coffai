@@ -28,7 +28,9 @@ namespace Fluid.Conditions
         {
             if (ctx is AIContext c)
             {
-                return c.HasState(State, Value);
+                var result = c.HasState(State, Value);
+                if (ctx.LogDecomposition) ctx.Log(Name, $"HasWorldStateCondition.IsValid:{result}", ctx.CurrentDecompositionDepth+1, this, result ? ConsoleColor.DarkGreen : ConsoleColor.DarkRed);
+                return result;
             }
 
             throw new Exception("Unexpected context type!");

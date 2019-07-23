@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 using FluidHTN;
 using FluidHTN.Contexts;
+using FluidHTN.Debug;
 using FluidHTN.Factory;
 
 namespace Fluid
@@ -24,14 +25,14 @@ namespace Fluid
 
     public class AIContext : BaseContext
     {
-        private byte[] _worldState = new byte[Enum.GetValues(typeof(AIWorldState)).Length];
+        private readonly byte[] _worldState = new byte[Enum.GetValues(typeof(AIWorldState)).Length];
 
         public override IFactory Factory { get; set; } = new DefaultFactory();
         public override List<string> MTRDebug { get; set; }
         public override List<string> LastMTRDebug { get; set; }
         public override bool DebugMTR { get; } = false;
-        public override Stack<string> DecompositionLog { get; set; }
-        public override bool LogDecomposition { get; } = false;
+        public override Queue<IBaseDecompositionLogEntry> DecompositionLog { get; set; }
+        public override bool LogDecomposition { get; } = true;
         public override byte[] WorldState => _worldState;
 
         public Player Player { get; }

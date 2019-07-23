@@ -33,13 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluid-HTN, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\fluid-hierarchial-task-network-ext\Fluid-HTN-Ext\bin\Debug\netstandard2.0\Fluid-HTN.dll</HintPath>
+    <Reference Include="Fluid-HTN">
+      <HintPath>..\..\..\fluid-hierarchical-task-network\Fluid-HTN\bin\Debug\Fluid-HTN.dll</HintPath>
     </Reference>
-    <Reference Include="Fluid-HTN-Ext, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\fluid-hierarchial-task-network-ext\Fluid-HTN-Ext\bin\Debug\netstandard2.0\Fluid-HTN-Ext.dll</HintPath>
+    <Reference Include="Fluid-HTN-Ext">
+      <HintPath>..\..\..\fluid-hierarchical-task-network-ext\Fluid-HTN-Ext\bin\Debug\netstandard2.0\Fluid-HTN-Ext.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

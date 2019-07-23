@@ -20,6 +20,7 @@ namespace Fluid.Effects
         {
             if (ctx is AIContext c)
             {
+                if (ctx.LogDecomposition) ctx.Log(Name, $"SetEnergyEffect.Apply({EnergyLevel}):{Type}", ctx.CurrentDecompositionDepth+1, this);
                 c.SetState(AIWorldState.Energy, EnergyLevel, Type);
                 if(c.ContextState == ContextState.Executing) Console.WriteLine($"Your energy is {ToVerbose(EnergyLevel)}");
                 return;

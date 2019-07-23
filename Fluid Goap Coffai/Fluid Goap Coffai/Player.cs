@@ -1,4 +1,5 @@
-﻿using FluidHTN;
+﻿using System;
+using FluidHTN;
 
 namespace Fluid
 {
@@ -24,6 +25,20 @@ namespace Fluid
             while (!_context.HasState(AIWorldState.Energy, (byte) EnergyLevel.SuperCharged))
             {
                 _planner.Tick(_domain, _context);
+
+                if (_context.LogDecomposition)
+                {
+                    Console.WriteLine("---------------------- DECOMP LOG --------------------------");
+                    while (_context.DecompositionLog?.Count > 0)
+                    {
+                        var entry = _context.DecompositionLog.Dequeue();
+                        var depth = FluidHTN.Debug.Debug.DepthToString(entry.Depth);
+                        Console.ForegroundColor = entry.Color;
+                        Console.WriteLine($"{depth}{entry.Name}: {entry.Description}");
+                    }
+                    Console.ResetColor();
+                    Console.WriteLine("-------------------------------------------------------------");
+                }
             }
         }
     }
