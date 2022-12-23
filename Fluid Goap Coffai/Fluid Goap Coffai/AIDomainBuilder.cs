@@ -20,7 +20,6 @@ namespace Fluid
         public AIDomainBuilder HasState(AIWorldState state)
         {
             var condition = new HasWorldStateCondition(state);
-            condition.Depth = Pointer.Depth + 1;
             Pointer.AddCondition(condition);
             return this;
         }
@@ -28,7 +27,6 @@ namespace Fluid
         public AIDomainBuilder HasNotState(AIWorldState state)
         {
             var condition = new HasWorldStateCondition(state, 0);
-            condition.Depth = Pointer.Depth + 1;
             Pointer.AddCondition(condition);
             return this;
         }
@@ -36,7 +34,6 @@ namespace Fluid
         public AIDomainBuilder HasState(AIWorldState state, byte value)
         {
             var condition = new HasWorldStateCondition(state, value);
-            condition.Depth = Pointer.Depth + 1;
             Pointer.AddCondition(condition);
             return this;
         }
@@ -51,7 +48,6 @@ namespace Fluid
             if (Pointer is IPrimitiveTask task)
             {
                 var effect = new SetWorldStateEffect(state, type);
-                effect.Depth = task.Depth + 1;
                 task.AddEffect(effect);
             }
             return this;
@@ -62,7 +58,6 @@ namespace Fluid
             if (Pointer is IPrimitiveTask task)
             {
                 var effect = new SetWorldStateEffect(state, value, type);
-                effect.Depth = task.Depth + 1;
                 task.AddEffect(effect);
             }
             return this;
@@ -73,7 +68,6 @@ namespace Fluid
             if (Pointer is IPrimitiveTask task)
             {
                 var effect = new SetWorldStateEffect(state, value, type);
-                effect.Depth = task.Depth + 1;
                 task.AddEffect(effect);
             }
             return this;
@@ -84,7 +78,6 @@ namespace Fluid
             if (Pointer is IPrimitiveTask task)
             {
                 var effect = new SetEnergyEffect(energyLevel, type);
-                effect.Depth = task.Depth + 1;
                 task.AddEffect(effect);
             }
 
@@ -123,7 +116,6 @@ namespace Fluid
             if (Pointer is GOAPSequence goapSequence)
             {
                 var parent = new GOAPStaticCostTask { Name = name, StaticCost = cost };
-                parent.Depth = goapSequence.Depth + 1;
                 _domain.Add(goapSequence, parent);
                 _pointers.Add(parent);
                 return this;
